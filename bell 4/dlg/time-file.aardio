@@ -1,0 +1,67 @@
+import win.ui;
+import fsys.dlg;
+import io;
+import process;
+import bell4;
+
+var winform = win.form(text="aardio form";right=600;bottom=560;)
+
+if(bell4.window.LDMode() == 0){
+    winform.bgcolor = 2960685;
+    winform.add(
+	addFile={cls="button";text="添加时间文件";left=100;top=210;right=360;bottom=240;bgcolor=3947580;dl=1;dr=0.4;dt=1;font=LOGFONT(name='Microsoft YaHei UI');z=3};
+	checkTimeFile={cls="button";text="预览时间文件";left=100;top=250;right=360;bottom=280;bgcolor=3947580;dl=1;dr=0.4;dt=1;font=LOGFONT(name='Microsoft YaHei UI');z=5};
+	item={cls="combobox";left=100;top=170;right=510;bottom=190;bgcolor=6908265;color=16777215;dl=1;dr=1;dt=1;edge=1;font=LOGFONT(name='Microsoft YaHei UI');items={};mode="dropdown";z=6};
+	start={cls="button";text="确定";left=370;top=210;right=510;bottom=280;bgcolor=3947580;dl=0.62;dr=1;dt=1;font=LOGFONT(name='Microsoft YaHei UI');z=4};
+	static={cls="static";text="计时 (来源：时间文件)";left=0;top=30;right=600;bottom=80;align="center";color=16777215;dl=1;dr=1;dt=1;font=LOGFONT(h=-29;name='Microsoft YaHei UI');transparent=1;z=1};
+	tips={cls="static";text="选择时间文件";left=100;top=140;right=510;bottom=160;color=16777215;dl=1;dr=1;dt=1;font=LOGFONT(name='Microsoft YaHei UI');transparent=1;z=2}
+	)
+}else{
+    winform.bgcolor = 16777215;
+    winform.add(
+	addFile={cls="button";text="添加时间文件";left=100;top=210;right=360;bottom=240;dl=1;dr=0.4;dt=1;font=LOGFONT(name='Microsoft YaHei UI');z=3};
+	checkTimeFile={cls="button";text="预览时间文件";left=100;top=250;right=360;bottom=280;dl=1;dr=0.4;dt=1;font=LOGFONT(name='Microsoft YaHei UI');z=5};
+	item={cls="combobox";left=100;top=170;right=510;bottom=190;dl=1;dr=1;dt=1;edge=1;font=LOGFONT(name='Microsoft YaHei UI');items={};mode="dropdown";z=6};
+	start={cls="button";text="确定";left=370;top=210;right=510;bottom=280;dl=0.62;dr=1;dt=1;font=LOGFONT(name='Microsoft YaHei UI');z=4};
+	static={cls="static";text="计时 (来源：时间文件)";left=0;top=30;right=600;bottom=80;align="center";dl=1;dr=1;dt=1;font=LOGFONT(h=-29;name='Microsoft YaHei UI');transparent=1;z=1};
+	tips={cls="static";text="选择时间文件";left=100;top=140;right=510;bottom=160;dl=1;dr=1;dt=1;font=LOGFONT(name='Microsoft YaHei UI');transparent=1;z=2}
+	)
+}
+
+//winform.item.items = bell4.tmFl.gtTmFl();
+winform.item.selIndex = 1;
+var dict = string.load(".\user\Config\UserData\dictionary.dict");
+var count = 0;
+filePath = string.split(dict, '|');
+winform.item.clear();
+while(count < table.len(filePath)){
+    winform.item.add((string.split(filePath[count + 1], "/")[table.len(string.split(filePath[count + 1], "/"))]));
+    count++;
+}
+
+/*操作{{*/
+winform.start.oncommand = function(id,event){
+    if(winform.item.selIndex == 0){
+		win.msgbox("请先选择时间文件", " 错误", 0/*_MB_OK*/ | 0x10/*_MB_ICONSTOP*/, winform.hwnd);
+		return 0;
+	}
+	bell4.cntdwn.useTmFl(bell4.tmFl.gtTmFlItm(winform.item.selIndex));
+}
+
+winform.checkTimeFile.oncommand = function(id,event){
+	//win.msgbox(string.replace (string.load(filePath[winform.item.selIndex]), "|", '\n'), " " + winform.item.selText + " 的数据");
+	if(winform.item.selIndex == 0){
+		win.msgbox("请先选择时间文件", " 错误", 0/*_MB_OK*/ | 0x10/*_MB_ICONSTOP*/, winform.hwnd);
+		return 0;
+	}
+	bell4.tmFl.chkTmFl(winform.item.selIndex);
+}
+
+winform.addFile.oncommand = function(id,event){
+    bell4.tmFl.addTmFl();
+}
+/*}}*/
+
+winform.show();
+win.loopMessage();
+return winform;

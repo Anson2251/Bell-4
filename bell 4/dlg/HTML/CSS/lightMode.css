@@ -1,0 +1,42 @@
+button {
+    border: none;
+    background-color: #f1f1f1;
+    font-size: 1em;
+    font-family: "Microsoft YaHei UI";
+    font-size: 10pt;
+    border-radius: 0.1em;
+    height: 2em;
+    box-shadow: 0.1em 0.1em 0.1em #d1d1d1;
+}
+
+button:active {
+    margin-top: 0.03em;
+    border-color: #006bbe;
+    background-color: #c8d6e1;
+    box-shadow: 0.07em 0.07em 0.07em #a1a1a1;
+}
+
+button:hover {
+    border: 1px;
+    border-color: #006bbe;
+    background-color: #d8e6f1;
+}
+
+p {
+    font-family: "Microsoft YaHei UI";
+    font-size: 10pt;
+}
+
+body {
+    user-select: none;
+    -webkit-user-select: none;
+    cursor: default;
+    background: #fff;
+}
+
+h3 {
+    border-bottom: 3px solid #aaa;
+    align-items: left;
+    font-family: "Microsoft YaHei UI";
+    font-weight: lighter;
+}

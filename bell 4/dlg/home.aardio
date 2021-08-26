@@ -1,0 +1,58 @@
+import win.ui;
+import win.reg;
+import bell4;
+
+var winform = win.form(text="aardio form";right=600;bottom=560;)
+
+if(bell4.window.LDMode() == 0){
+	winform.bgcolor = 2960685;
+	winform.add(
+	groupbox={cls="groupbox";text=" 快捷方式 ";left=10;top=80;right=590;bottom=550;bgcolor=12632256;db=1;dl=1;dr=1;dt=1;edge=1;font=LOGFONT(h=-13;name='Microsoft YaHei UI');z=1};
+	plus={cls="plus";left=40;top=152;right=344;bottom=248;bgcolor=5921370;db=0.56;dl=1;dr=0.43;dt=1;foreRepeat="scale";foreground="\res\time_file-d.png";notify=1;z=7};
+	plus2={cls="plus";left=40;top=256;right=344;bottom=360;bgcolor=5921370;db=0.36;dl=1;dr=0.43;dt=0.46;foreRepeat="scale";foreground="\res\time_set-d.png";notify=1;z=2};
+	plus3={cls="plus";left=40;top=368;right=344;bottom=468;bgcolor=5921370;db=1;dl=1;dr=0.43;dt=0.66;foreRepeat="scale";foreground="\res\time_time-d.png";notify=1;z=6};
+	plus4={cls="plus";left=352;top=152;right=560;bottom=360;bgcolor=5921370;db=0.36;dl=0.59;dr=1;dt=1;foreRepeat="scale";foreground="\res\stopwatch-d.png";notify=1;z=5};
+	plus5={cls="plus";left=352;top=368;right=560;bottom=468;bgcolor=5921370;db=1;dl=0.59;dr=1;dt=0.66;foreRepeat="scale";foreground="\res\add_file-d.png";notify=1;z=4};
+	static2={cls="static";text="Bell 4";left=0;top=20;right=600;bottom=70;align="center";color=16777215;dl=1;dr=1;dt=1;font=LOGFONT(h=-29;name='Microsoft YaHei UI');notify=1;transparent=1;z=3}
+	) 
+}else{
+    winform.bgcolor = 16777215;
+	winform.add(
+	groupbox={cls="groupbox";text=" 快捷方式 ";left=10;top=80;right=590;bottom=550;bgcolor=14803425;db=1;dl=1;dr=1;dt=1;edge=1;font=LOGFONT(h=-13;name='Microsoft YaHei UI');z=1};
+	plus={cls="plus";left=40;top=152;right=344;bottom=248;bgcolor=14803425;db=0.56;dl=1;dr=0.43;dt=1;foreRepeat="scale";foreground="\res\time_file.png";notify=1;z=7};
+	plus2={cls="plus";left=40;top=256;right=344;bottom=360;bgcolor=14803425;db=0.36;dl=1;dr=0.43;dt=0.46;foreRepeat="scale";foreground="\res\time_set.png";notify=1;z=2};
+	plus3={cls="plus";left=40;top=368;right=344;bottom=468;bgcolor=14803425;db=1;dl=1;dr=0.43;dt=0.66;foreRepeat="scale";foreground="\res\time_time.png";notify=1;z=6};
+	plus4={cls="plus";left=352;top=152;right=560;bottom=360;bgcolor=14803425;db=0.36;dl=0.59;dr=1;dt=1;foreRepeat="scale";foreground="\res\stopwatch.png";notify=1;z=5};
+	plus5={cls="plus";left=352;top=368;right=560;bottom=468;bgcolor=14803425;db=1;dl=0.59;dr=1;dt=0.66;foreRepeat="scale";foreground="\res\add_file.png";notify=1;z=4};
+	static2={cls="static";text="Bell 4";left=0;top=20;right=600;bottom=70;align="center";dl=1;dr=1;dt=1;font=LOGFONT(h=-29;name='Microsoft YaHei UI');notify=1;transparent=1;z=3}
+	)
+}
+
+/*操作{{*/
+winform.plus2.oncommand = function(id,event){
+	bell4.cntdwn.stMnt(bell4.inputBox("请输入时间", "请输入时间   (单位: 分)", winform.hwnd));
+}
+
+winform.plus3.oncommand = function(id,event){
+	bell4.cntdwn.stTm(bell4.inputBox("请输入时间", "请输入时间  ( 格式: [小时]:[分钟] )", winform.hwnd));
+}
+
+
+winform.plus4.oncommand = function(id,event){
+	bell4.cntdwn.stpWtch();
+}
+
+winform.plus5.oncommand = function(id,event){
+	//win.msgboxErr("该功能暂时未完善		", " 错误", winform.hwnd);
+	bell4.tmFl.addTmFl();
+}
+
+winform.plus.oncommand = function(id,event){
+	//win.msgboxErr("该功能暂时未完善		", " 错误", winform.hwnd);
+	bell4.cntdwn.useTmFl(bell4.tmFl.gtTmFlItm(1));
+}
+/*}}*/
+
+winform.show();
+win.loopMessage();
+return winform;

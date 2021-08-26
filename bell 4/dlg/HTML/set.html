@@ -1,0 +1,180 @@
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./CSS/switch.css">
+    <link rel="stylesheet" href="./CSS/darkMode.css" id="ldMode">
+    <script>
+        if (external.LDMode() == 0) {
+            document.getElementById("ldMode").href = "./CSS/darkMode.css";
+        } else {
+            document.getElementById("ldMode").href = "./CSS/lightMode.css";
+        }
+        //alert(external.LDMode());
+
+        function saveSetting() {
+            var setting = {};
+            if (document.getElementById("cdTheme").checked) {
+                setting[3] = "1";
+            } else {
+                setting[3] = "0"
+            }
+            if (document.getElementById("preload").checked) {
+                setting[0] = "1";
+            } else {
+                setting[0] = "0"
+            }
+            if (document.getElementById("atom").checked) {
+                setting[1] = "1";
+            } else {
+                setting[1] = "0"
+            }
+            if (document.getElementById("colRAWgrbg").checked) {
+                setting[2] = "1";
+            } else {
+                setting[2] = "0"
+            }
+            external.svSt(setting);
+        }
+    </script>
+    <script>
+        function setBehind() {
+            var setting = external.gtSt();
+            if (setting[3] == 1) {
+                document.getElementById("cdTheme").checked = true;
+            } else {
+                document.getElementById("cdTheme").checked = false;
+            }
+            if (setting[0] == 1) {
+                document.getElementById("preload").checked = true;
+            } else {
+                document.getElementById("preload").checked = false;
+            }
+            if (setting[1] == 1) {
+                document.getElementById("atom").checked = true;
+            } else {
+                document.getElementById("atom").checked = false;
+            }
+            if (setting[2] == 1) {
+                document.getElementById("colRAWgrbg").checked = true;
+            } else {
+                document.getElementById("colRAWgrbg").checked = false;
+            }
+            var behind = setInterval(function() {
+                if (document.getElementById("cdTheme").checked) {
+                    document.getElementById("cdTheme-tip").src = "./IMG/ThemeR.png";
+                } else {
+                    document.getElementById("cdTheme-tip").src = "./IMG/ThemeT.png";
+                }
+                if (document.getElementById("preload").checked) {
+                    document.getElementById("preload-tip").style.color = "rgba(255, 0, 0, 0)";
+                } else {
+                    document.getElementById("preload-tip").style.color = "rgba(255, 0, 0, 1)";
+                }
+                if (document.getElementById("atom").checked) {
+                    document.getElementById("atom-tip").style.color = "rgba(255, 0, 0, 0)";
+                } else {
+                    document.getElementById("atom-tip").style.color = "rgba(255, 0, 0, 1)";
+                }
+                if (document.getElementById("colRAWgrbg").checked) {
+                    document.getElementById("colRAWgrbg-tip").style.color = "rgba(0, 150, 0, 0)";
+                    document.getElementById("colRAWgrbg-tip-2").style.color = "rgba(255, 0, 0, 0)";
+                } else {
+                    document.getElementById("colRAWgrbg-tip").style.color = "rgba(0, 150, 0, 1)";
+                    document.getElementById("colRAWgrbg-tip-2").style.color = "rgba(255, 0, 0, 1)";
+                }
+            }, 5);
+        }
+    </script>
+</head>
+
+<body onload="setBehind();">
+    <h3>时间文件</h3>
+    <button style="width: calc(50% - 1em);" onclick="external.editTmFl();" checked>编辑时间文件</button>
+    <button style="width: calc(50% - 1em); margin-left:1em" onclick="external.mngTmFl();" checked>管理时间文件</button>
+    <h3>铃声文件</h3>
+    <button style="width: calc(50% - 1em);" onclick="external.mngAdFl();" checked>管理铃声文件</button>
+    <h3>其他设置</h3>
+    <table style="margin-top: 1em; width:100%;">
+        <tr style="height: 5em;">
+            <td>
+                <p>圆形倒计时窗口主题</p>
+            </td>
+            <td>
+                <label class="switch" style="transform: scale(0.6);">
+                    <input type="checkbox" id="cdTheme">
+                    <div class="slider round"></div>
+                </label>
+            </td>
+            <td>
+                <table>
+                    <tr>
+                        <td>
+                            <p>主题预览：</p>
+                        </td>
+                        <td><img id="cdTheme-tip" style="height: 4em;"></td>
+                    </tr>
+                </table>
+
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>界面预加载</p>
+            </td>
+            <td>
+                <label class="switch" style="transform: scale(0.6);">
+                    <input type="checkbox" id="preload">
+                    <div class="slider round"></div>
+                </label>
+            </td>
+            <td>
+                <p style="font-size: 8pt;" id="preload-tip">关闭后能减少软件启动时间，但会增加启动后切换页面的时间</p>
+            </td>
+        </tr>
+        <tr>
+            <td>
+                <p>设置原子值</p>
+            </td>
+            <td>
+                <label class="switch" style="transform: scale(0.6);">
+                    <input type="checkbox" id="atom">
+                    <div class="slider round"></div>
+                </label>
+            </td>
+            <td>
+                <p style="font-size: 8pt;" id="atom-tip">关闭后能同时运行 Bell 4.X 的多个版本，但可能会引起操作混乱</p>
+            </td>
+        </tr>
+        <!--<tr style="margin-top: 2em; border-top: 1.5px solid #aaa;">
+            <td colspan="3">
+                <p style="font-size: 10pt; color: red; font-style: italic;">注意：前方为实验性内容</p>
+            </td>
+        </tr>!-->
+        <tr>
+            <td>
+                <p>自动回收内存垃圾</p>
+            </td>
+            <td>
+                <label class="switch" style="transform: scale(0.6);">
+                    <input type="checkbox" id="colRAWgrbg">
+                    <div class="slider round"></div>
+                </label>
+            </td>
+            <td>
+                <p style="font-size: 8pt; margin-bottom: -0.3em;" id="colRAWgrbg-tip">开启后能自动回收内存，减少资源占用</p>
+                <p style="font-size: 8pt; margin-top: -0.3em;" id="colRAWgrbg-tip-2">但可能导致程序运行卡顿，请谨慎开启</p>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="3">
+                <button style="width:100%; margin-top: 1em;" onclick="saveSetting()">保存修改</button>
+            </td>
+        </tr>
+    </table>
+
+
+
+</body>
+
+</html>

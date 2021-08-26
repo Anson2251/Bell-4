@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<project ver="10" name="bell 4" libEmbed="true" icon="res\bell-icon.ico" ui="win" output="bell 4.exe" CompanyName="-" FileDescription="bell 4" LegalCopyright="Copyright (C) 朱赫炎 2021" ProductName="bell 4" InternalName="bell 4" FileVersion="4" ProductVersion="4" publishDir="/dist/" dstrip="false" local="false" ignored="false">
+	<file name="main.aardio" path="main.aardio" comment="main.aardio"/>
+	<folder name="资源文件" path="res" embed="true" local="false" ignored="false">
+		<file name="add_file-d.png" path="res\add_file-d.png" comment="res\add_file-d.png"/>
+		<file name="add_file.png" path="res\add_file.png" comment="res\add_file.png"/>
+		<file name="bell-about.jpg" path="res\bell-about.jpg" comment="res\bell-about.jpg"/>
+		<file name="bell-icon.ico" path="res\bell-icon.ico" comment="res\bell-icon.ico"/>
+		<file name="digifaw.ttf" path="res\digifaw.ttf" comment="res\digifaw.ttf"/>
+		<file name="home-d.png" path="res\home-d.png" comment="res\home-d.png"/>
+		<file name="home.png" path="res\home.png" comment="res\home.png"/>
+		<file name="loading-r.png" path="res\loading-r.png" comment="res\loading-r.png"/>
+		<file name="moveWindows.ico" path="res\moveWindows.ico" comment="res\moveWindows.ico"/>
+		<file name="pie-bg.png" path="res\pie-bg.png" comment="res\pie-bg.png"/>
+		<file name="pie.png" path="res\pie.png" comment="res\pie.png"/>
+		<file name="set-d.png" path="res\set-d.png" comment="res\set-d.png"/>
+		<file name="set.png" path="res\set.png" comment="res\set.png"/>
+		<file name="stopwatch-d.png" path="res\stopwatch-d.png" comment="res\stopwatch-d.png"/>
+		<file name="stopwatch.png" path="res\stopwatch.png" comment="res\stopwatch.png"/>
+		<file name="time_file-d.png" path="res\time_file-d.png" comment="res\time_file-d.png"/>
+		<file name="time_file-icon-d.png" path="res\time_file-icon-d.png" comment="res\time_file-icon-d.png"/>
+		<file name="time_file-icon.png" path="res\time_file-icon.png" comment="res\time_file-icon.png"/>
+		<file name="time_file.png" path="res\time_file.png" comment="res\time_file.png"/>
+		<file name="time_set-d.png" path="res\time_set-d.png" comment="res\time_set-d.png"/>
+		<file name="time_set-icon-d.png" path="res\time_set-icon-d.png" comment="res\time_set-icon-d.png"/>
+		<file name="time_set-icon.png" path="res\time_set-icon.png" comment="res\time_set-icon.png"/>
+		<file name="time_set.png" path="res\time_set.png" comment="res\time_set.png"/>
+		<file name="time_time-d.png" path="res\time_time-d.png" comment="res\time_time-d.png"/>
+		<file name="time_time-icon-d.png" path="res\time_time-icon-d.png" comment="res\time_time-icon-d.png"/>
+		<file name="time_time-icon.png" path="res\time_time-icon.png" comment="res\time_time-icon.png"/>
+		<file name="time_time.png" path="res\time_time.png" comment="res\time_time.png"/>
+		<file name="white-space-full-bg.png" path="res\white-space-full-bg.png" comment="res\white-space-full-bg.png"/>
+		<file name="white-space-full.png" path="res\white-space-full.png" comment="res\white-space-full.png"/>
+	</folder>
+	<folder name="窗体文件" path="dlg" comment="目录" embed="true" local="false" ignored="false">
+		<file name="countdownWindow-setTime.aardio" path="dlg\countdownWindow-setTime.aardio" comment="dlg\countdownWindow-setTime.aardio"/>
+		<file name="countdownWindow-timeFile.aardio" path="dlg\countdownWindow-timeFile.aardio" comment="dlg\countdownWindow-timeFile.aardio"/>
+		<file name="countdownWindow.aardio" path="dlg\countdownWindow.aardio" comment="dlg\countdownWindow.aardio"/>
+		<file name="edit_time-file.aardio" path="dlg\edit_time-file.aardio" comment="dlg\edit_time-file.aardio"/>
+		<file name="home.aardio" path="dlg\home.aardio" comment="dlg\home.aardio"/>
+		<file name="set.aardio" path="dlg\set.aardio" comment="dlg\set.aardio"/>
+		<file name="stopwatch.aardio" path="dlg\stopwatch.aardio" comment="dlg\stopwatch.aardio"/>
+		<file name="time-file-manager.aardio" path="dlg\time-file-manager.aardio" comment="dlg\time-file-manager.aardio"/>
+		<file name="time-file.aardio" path="dlg\time-file.aardio" comment="dlg\time-file.aardio"/>
+		<file name="time-set.aardio" path="dlg\time-set.aardio" comment="dlg\time-set.aardio"/>
+		<file name="time_setTime.aardio" path="dlg\time_setTime.aardio" comment="dlg\time_setTime.aardio"/>
+		<file name="新计时窗口-技术验证.aardio" path="dlg\新计时窗口-技术验证.aardio" comment="dlg\新计时窗口-技术验证.aardio"/>
+		<folder name="HTML" path="dlg\HTML" comment="dlg\HTML">
+			<file name="set.html" path="dlg\HTML\set.html" comment="dlg\HTML\set.html"/>
+			<folder name="CSS" path="dlg\HTML\CSS" comment="dlg\HTML\CSS">
+				<file name="darkMode.css" path="dlg\HTML\CSS\darkMode.css" comment="dlg\HTML\CSS\darkMode.css"/>
+				<file name="lightMode.css" path="dlg\HTML\CSS\lightMode.css" comment="dlg\HTML\CSS\lightMode.css"/>
+				<file name="switch.css" path="dlg\HTML\CSS\switch.css" comment="dlg\HTML\CSS\switch.css"/>
+			</folder>
+			<folder name="IMG" path="dlg\HTML\IMG" comment="dlg\HTML\IMG">
+				<file name="ThemeR.png" path="dlg\HTML\IMG\ThemeR.png" comment="dlg\HTML\IMG\ThemeR.png"/>
+				<file name="ThemeT.png" path="dlg\HTML\IMG\ThemeT.png" comment="dlg\HTML\IMG\ThemeT.png"/>
+			</folder>
+		</folder>
+	</folder>
+</project>

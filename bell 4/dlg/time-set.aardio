@@ -1,0 +1,58 @@
+import win.ui;
+import bell4;
+import fsys.ini;
+
+var winform = win.form(text="aardio form";right=600;bottom=560)
+var setting = fsys.ini("\user\Config\Setting\bell4.ini").getSection("programSetting");
+if(bell4.window.LDMode() == 0){
+    winform.bgcolor = 2960685;
+    winform.add(
+	button={cls="button";text="确定";left=100;top=210;right=500;bottom=240;bgcolor=3947580;dl=1;dr=1;dt=1;font=LOGFONT(h=-13;name='Microsoft YaHei UI');z=4};
+	edit={cls="edit";left=100;top=170;right=500;bottom=190;bgcolor=6908265;border=1;color=16777215;dl=1;dr=1;dt=1;multiline=1;num=1;z=2};
+	static2={cls="static";text="计时 (来源：设置)";left=0;top=20;right=599;bottom=70;align="center";color=16777215;dl=1;dr=1;dt=1;font=LOGFONT(h=-28;name='Microsoft YaHei UI');transparent=1;z=1};
+	static3={cls="static";text="单位 (分钟)";left=100;top=140;right=210;bottom=160;color=16777215;dl=1;dr=1;dt=1;font=LOGFONT(h=-13;name='Microsoft YaHei UI');transparent=1;z=3}
+	)
+}else{
+    winform.bgcolor = 16777215;
+    winform.add(
+	button={cls="button";text="确定";left=100;top=210;right=500;bottom=240;dl=1;dr=1;dt=1;font=LOGFONT(h=-13;name='Microsoft YaHei UI');z=4};
+	edit={cls="edit";left=100;top=170;right=500;bottom=190;dl=1;dr=1;dt=1;edge=1;multiline=1;num=1;z=2};
+	static2={cls="static";text="计时 (来源：设置)";left=0;top=20;right=599;bottom=70;align="center";dl=1;dr=1;dt=1;font=LOGFONT(h=-28;name='Microsoft YaHei UI');transparent=1;z=1};
+	static3={cls="static";text="单位 (分钟)";left=100;top=140;right=210;bottom=160;dl=1;dr=1;dt=1;font=LOGFONT(h=-13;name='Microsoft YaHei UI');transparent=1;z=3}
+	)
+}
+
+winform.button.oncommand = function(id,event){
+    if (!winform.edit.text){
+		win.msgbox("时间不能为空	", " 错误", 0| 0x10);
+		return 0; 
+	}else{
+		if(setting.countdownRTheme == 1){
+        	bell4.cntdwn.stMntR(winform.edit.text);
+        }else{
+        	bell4.cntdwn.stMnt(winform.edit.text);
+        }
+	}
+	winform.edit.text = null;
+} 
+winform.edit.wndproc = function(hwnd,message,wparam,lparam){
+	if(message == 0x101/*_WM_KEYUP*/){
+    	if(wparam == 0xD/*_VK_RETURN*/){
+    		if (winform.edit.text == '\r\n' || !winform.edit.text || winform.edit.text == '\n'){
+				win.msgbox("时间不能为空	", " 错误", 0| 0x10);
+				return 0; 
+			}else{
+				if(setting.countdownRTheme == 1){
+        			bell4.cntdwn.stMntR(winform.edit.text);
+        		}else{
+        		    bell4.cntdwn.stMnt(winform.edit.text);
+        		}
+        	}
+        	winform.edit.text = null;
+    	}
+	}
+}
+
+winform.show();
+win.loopMessage();
+return winform; 

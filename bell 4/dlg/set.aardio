@@ -1,0 +1,68 @@
+import win.ui;
+import bell4;
+import fsys.ini;
+import fsys;
+import web.blink.portable;//生成独立EXE
+import web.blink.form;//导入miniblink组件
+
+var setForm = win.form(text="aardio form";right=600;bottom=560;bgcolor=3947580)
+
+if(bell4.window.LDMode() == 0){
+	setForm.bgcolor = 2960685;
+	setForm.add(
+	mainFrame={cls="custom";text="loading. . .";left=16;top=56;right=584;bottom=544;bgcolor=16777215;db=1;dl=1;dr=1;dt=1;font=LOGFONT(h=-20;name='微软雅黑 Light';weight=290);z=2};
+	static={cls="static";text="设置";left=0;top=16;right=599;bottom=66;align="center";color=16777215;dl=1;dr=1;dt=1;font=LOGFONT(h=-28;name='Microsoft YaHei UI');transparent=1;z=1}
+	)
+}else{
+    setForm.bgcolor = 16777215;
+	setForm.add(
+	mainFrame={cls="custom";text="loading. . .";left=16;top=56;right=584;bottom=544;bgcolor=16777215;db=1;dl=1;dr=1;dt=1;font=LOGFONT(h=-20;name='微软雅黑 Light';weight=290);z=2};
+	static={cls="static";text="设置";left=0;top=16;right=599;bottom=66;align="center";dl=1;dr=1;dt=1;font=LOGFONT(h=-28;name='Microsoft YaHei UI');transparent=1;z=1}
+	)
+}
+
+var mb = web.blink.form(setForm.mainFrame);
+web.blink.enableDpiScaling();
+//mb.showDevTools();
+mb.external = {
+	editTmFl = function(){
+		bell4.tmFl.editTmFl();
+	}
+	mngTmFl = function(){
+		bell4.tmFl.mngTmFl();
+	}
+	gtSt = function(){
+		var setting = fsys.ini("\user\Config\Setting\bell4.ini").getSection("programSetting");
+		var stPrld = setting.preload;
+		var stTm = setting.atom;
+		var colRAWgrbg = setting.collectgarbage;
+		var cdTheme = setting.countdownRTheme;
+		return {stPrld, stTm, colRAWgrbg, cdTheme}; 
+	}
+	svSt = function(setting){
+		/*io.open()
+		io.print(setting[0], setting[1]);
+		win.msgbox("2", " 提示", 0)*/
+		var settingFile = fsys.ini("\user\Config\Setting\bell4.ini").getSection("programSetting");
+		settingFile.preload = setting[0];
+		settingFile.atom = setting[1];
+		settingFile.collectgarbage = setting[2];
+		settingFile.countdownRTheme = setting[3];
+		settingFile.save(); 
+		win.msgbox("操作成功，请重启软件", " 提示", 0/*_MB_OK*/)
+	}
+	mngAdFl = function(){
+		bell4.adFl.mngAdFl();
+	}
+	LDMode = function(){
+		return bell4.window.LDMode();
+	}
+	
+};
+
+mb.go("./dlg/HTML/set.html");
+
+
+setForm.show();
+win.loopMessage();
+return setForm;
