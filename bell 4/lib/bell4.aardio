@@ -1265,7 +1265,7 @@ namespace upgrade{
             			http.headers = "host:raw.githubusercontent.com";
             			http.download(url, "C:\bell4Downlaod");
             			//win.msgbox('请彻底退出程序以便软件升级\n按下“确定”'
-						process.execute("C:\bell4Downlaod\Bell-4_latest_setup.exe", "-command upgrade -path " + io._exedir);
+						process.execute("C:\bell4Downlaod\Bell-4_setup.exe", "-command upgrade -path " + io._exedir);
 						//process.kill(io._exepath);
 						//process("C:\bell4Downlaod\Bell-4_latest_setup.exe", "-command upgrade -path " + io._exedir);
             		},url
