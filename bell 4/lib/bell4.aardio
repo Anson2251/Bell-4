@@ -457,7 +457,7 @@ namespace tmFl{
    			NTFP = TFDP + NTFP;
    			string.save(".\user\Config\UserData\dictionary.dict", "|" + NTFP, true);
    			NTFP = io.fullpath(NTFP);   
-   			string.save(NTFP, "1");
+   			string.save(NTFP, "");
    			dict = string.load(".\user\Config\UserData\dictionary.dict");
    			filePath = string.split(dict, '|');
    			showData(filePath);
